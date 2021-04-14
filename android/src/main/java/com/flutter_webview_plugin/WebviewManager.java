@@ -136,11 +136,7 @@ class WebviewManager {
         webViewClient = new BrowserClient() {
             @Override
             public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
-                if (ignoreSSLErrors){
-                    handler.proceed();
-                }else {
-                    super.onReceivedSslError(view, handler, error);
-                }
+                handler.cancel();
             }
         };
         webView.setOnKeyListener(new View.OnKeyListener() {
